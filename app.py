@@ -11,7 +11,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("models/gemini-2.5-flash")
 
 app = Flask(__name__)
-'''def init_db():
+def init_db():
   
     conn = sqlite3.connect("history.db")
     cursor = conn.cursor()
@@ -31,7 +31,7 @@ app = Flask(__name__)
     conn.commit()
     conn.close()
 
-init_db()'''
+init_db()
 
 # Landing Page
 @app.route("/")
@@ -42,8 +42,10 @@ def landing():
 # Home Page
 @app.route("/home")
 def home():
-    return render_template("home.html")
-
+    return render_template(
+        "home.html",
+        maps_api_key=GOOGLE_MAPS_API_KEY
+    )
 
 # Result Page
 @app.route("/result")

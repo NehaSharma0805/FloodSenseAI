@@ -23,7 +23,7 @@
             <h2>Start Assessment</h2>
             <br>
         </div>
-
+        
         <div class="tabs">
             <button class="tab active" onclick="showTab('coordinate')">
                 Coordinates
@@ -134,7 +134,7 @@ function initMap() {
         document.getElementById("lat").value = lat;
         document.getElementById("lon").value = lon;
 
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key={{ GOOGLE_MAPS_API_KEY }}`)
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key={{ maps_api_key }}`)
          .then(response => response.json())
          .then(data => {
 
@@ -165,7 +165,7 @@ function initMap() {
 </script>
 <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ maps_api_key }}&callback=initMap" async defer></script>
 
 
 
