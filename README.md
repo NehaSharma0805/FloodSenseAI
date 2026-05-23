@@ -52,7 +52,7 @@ to provide an intelligent flood risk assessment system.
 
 ## 📸 Screenshots
 
-(Add your screenshots here later)
+
 
 ---
 
