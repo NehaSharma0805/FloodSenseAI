@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/landing.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1 class="main-title">
+            Predicting Risks,<br>
+            Protecting Lives.
+        </h1>
+
+        <p class="subtitle">
+            FloodSense AI analyzes weather data to estimate flood risk and help communities stay prepared.
+        </p>
+
+        <a href="/home" class="start-btn">
+            Start Assessment >
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

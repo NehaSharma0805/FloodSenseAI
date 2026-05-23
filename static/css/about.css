@@ -1,0 +1,158 @@
+
+.about-page {
+    background: #cde8f4;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* HERO SECTION */
+.about-hero {
+    position: relative;
+    height: 340px;
+    background: url('/static/images/flood-bg.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    width: 80%;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* SECTION */
+.about-section {
+    width: 85%;
+    margin: 40px auto;
+}
+
+.section-card {
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.section-card h2 {
+    color: #0f172a;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.section-card p {
+    color: #1a222e;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+/* STEPS */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.step-box {
+    background: #eaf3fb;
+    padding: 20px;
+    border-radius: 14px;
+    transition: 0.3s;
+}
+
+.step-box:hover {
+    transform: translateY(-5px);
+}
+
+.step-box h3 {
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+/* TECHNOLOGIES */
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+.tech-item {
+    background: linear-gradient(135deg, #2563eb, #f6cce8);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* FEATURES */
+.feature-list {
+    padding-left: 20px;
+    color: #262d38;
+    line-height: 2;
+}
+
+.bottom-space {
+    padding-bottom: 50px;
+}
+/* IMPACT SECTION */
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.impact-box {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.impact-box:hover {
+    transform: translateY(-6px);
+}
+
+.impact-box h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #38bdf8;
+}
+
+.impact-box p {
+    color: #e2e8f0;
+    line-height: 1.7;
+}
+
+.advantage-text {
+    margin-top: 30px;
+    font-size: 17px;
+    line-height: 1.9;
+    color: #334155;
+}
+

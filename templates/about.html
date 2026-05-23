@@ -1,0 +1,201 @@
+# FloodSense AI — About Page
+
+## Replace your current `about.html` body content with this
+
+```html
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="about-page">
+
+    <!-- HERO SECTION -->
+    <section class="about-hero">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>About FloodSense AI</h1>
+
+            <p>
+                FloodSense AI is an intelligent flood risk prediction system
+                that combines weather analysis, terrain data, river proximity,
+                and AI-generated insights to estimate flood danger levels in nearly real time.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- PROJECT OVERVIEW -->
+    <section class="about-section">
+
+        <div class="section-card">
+            <h2>Project Overview</h2>
+
+            <p>
+                FloodSense AI helps users analyze flood-prone areas using live
+                environmental data and artificial intelligence. Users can select
+                any location directly on the map to receive flood risk analysis,
+                confidence scores, weather insights, and AI-powered safety suggestions.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="about-section">
+
+        <div class="section-card">
+            <h2>How It Works</h2>
+
+            <div class="steps-grid">
+
+                <div class="step-box">
+                    <h3>1. Select Location</h3>
+                    <p>
+                        Users choose a location on the interactive map.
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <h3>2. Data Collection</h3>
+                    <p>
+                        The system fetches live weather, forecast,
+                        elevation, and river proximity data.
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <h3>3. Risk Analysis</h3>
+                    <p>
+                        Flood risk is calculated using a weighted
+                        environmental risk model.
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <h3>4. AI Insights</h3>
+                    <p>
+                        Gemini AI generates flood reasoning and
+                        safety recommendations.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TECHNOLOGIES -->
+    <section class="about-section">
+
+        <div class="section-card">
+            <h2>Technologies Used</h2>
+
+            <div class="tech-grid">
+                <div class="tech-item">Python</div>
+                <div class="tech-item">Flask</div>
+                <div class="tech-item">Google Maps API</div>
+                <div class="tech-item">Weather API</div>
+                <div class="tech-item">Gemini AI</div>
+                <div class="tech-item">HTML</div>
+                <div class="tech-item">CSS</div>
+                <div class="tech-item">JavaScript</div>
+                <div class="tech-item">SQLite</div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="about-section">
+
+        <div class="section-card">
+            <h2>Key Features</h2>
+
+            <ul class="feature-list">
+                <li>Interactive Google Maps location selection</li>
+                <li>Real-time weather and forecast analysis</li>
+                <li>Flood risk scoring system</li>
+                <li>AI-generated flood reasoning</li>
+                <li>Safety suggestions for users</li>
+                <li>Confidence score calculation</li>
+                <li>History tracking system</li>
+            </ul>
+        </div>
+
+    </section>
+    <section class="about-section">
+
+    <div class="section-card">
+
+        <h2>Why FloodSense AI Matters</h2>
+
+        <p>
+            Floods are one of the most common natural disasters in India.
+            According to the National Disaster Management Authority (NDMA),
+            more than 40 million hectares of land in India are flood-prone,
+            and thousands of lives are affected every year.
+        </p>
+
+        <div class="impact-grid">
+
+            <div class="impact-box">
+                <h3>40+ Million</h3>
+                <p>Hectares of land in India are flood-prone.</p>
+            </div>
+
+            <div class="impact-box">
+                <h3>1,600+</h3>
+                <p>Average human lives lost every year due to floods.</p>
+            </div>
+
+            <div class="impact-box">
+                <h3>1.2 Million</h3>
+                <p>Houses damaged annually because of floods.</p>
+            </div>
+
+            <div class="impact-box">
+                <h3>₹6972 Crore</h3>
+                <p>Average annual flood-related losses in India.</p>
+            </div>
+
+        </div>
+
+        <p class="advantage-text">
+            FloodSense AI helps normal users quickly assess flood danger levels,
+            understand environmental risks, and receive AI-powered safety guidance
+            before visiting or living in vulnerable areas.
+        </p>
+
+        </div>
+
+    </section>
+
+    <!-- FUTURE SCOPE -->
+    <section class="about-section bottom-space">
+
+        <div class="section-card">
+            <h2>Future Scope</h2>
+
+            <p>
+                In the future, FloodSense AI can be extended with satellite imagery,
+                real-time disaster alerts, IoT sensor integration, mobile support,
+                and machine learning models for more accurate flood prediction.
+            </p>
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}
+

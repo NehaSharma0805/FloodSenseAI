@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet">
+
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}">
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="home-container">
+
+    <!-- LEFT PANEL -->
+    <aside class="left-panel">
+
+        <div class="panel-header">
+            <h2>Start Assessment</h2>
+            <br>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('coordinate')">
+                Coordinates
+            </button>
+
+            <button class="tab" onclick="showTab('image')">
+                Image Analysis
+            </button>
+        </div>
+
+        <!-- Coordinate Tab -->
+        <div id="coordinate" class="tab-content active">
+            <div class="input-group">
+                <label for="lat">Latitude</label>
+                <input type="text" id="lat" placeholder="0.000000">
+            </div>
+
+            <div class="input-group">
+                <label for="lon">Longitude</label>
+                <input type="text" id="lon" placeholder="0.000000">
+            </div>
+            <div>
+                <label for="location-name">Location Name</label>
+                <input type="text" id="location-name"
+                placeholder="Location Name"
+                readonly>
+            </div>
+        </div>
+
+        <!-- Image Tab -->
+        <div id="image" class="tab-content">
+            <div class="input-group">
+                <label>Terrain Image</label>
+                <div class="file-drop-area">
+                    <input type="file" id="terrain-image">
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="predict-btn">
+         Run Prediction
+        </button>
+
+
+        <footer class="sidebar-footer">
+            <p>&copy; 2026 FloodSense AI</p>
+            <p>Environmental Safety Division</p>
+        </footer>
+
+    </aside>
+
+
+    <!-- MAP SECTION -->
+    <main class="map-panel">
+        <div id="map"></div>
+    </main>
+    
+    <!--Loading spinner-->
+    <div id="loading-overlay">
+    <div class="loader-box">
+        <div class="spinner"></div>
+        <p>Analyzing...</p>
+    </div>
+    </div>
+
+</div>
+
+
+
+<script>
+   
+
+    function showTab(tabName) {
+        document.querySelectorAll('.tab-content')
+            .forEach(el => el.classList.remove('active'));
+
+        document.querySelectorAll('.tab')
+            .forEach(el => el.classList.remove('active'));
+
+        document.getElementById(tabName)
+            .classList.add('active');
+
+        event.currentTarget.classList.add('active');
+    }
+</script>
+
+<!-- Google Map initialization -->
+<script>
+let map;
+let marker;
+let selectedLocation = "";
+function initMap() {
+
+    const india = { lat: 20.5937, lng: 78.9629 };
+
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 5,
+        center: india,
+        disableDefaultUI: true,
+        zoomControl: true
+    });
+
+    map.addListener("click", (event) => {
+
+        const lat = event.latLng.lat().toFixed(6);
+        const lon = event.latLng.lng().toFixed(6);
+
+        document.getElementById("lat").value = lat;
+        document.getElementById("lon").value = lon;
+
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key={{ GOOGLE_MAPS_API_KEY }}`)
+         .then(response => response.json())
+         .then(data => {
+
+            if (data.results.length > 0) {
+              const placeName = data.results[0].formatted_address;
+              document.getElementById("location-name").value = placeName;
+
+                // SAVE FOR RESULT PAGE
+              localStorage.setItem("selected_location", placeName);
+             }
+
+             })
+    .catch(error => {
+        console.log("Geocode error:", error);
+    });
+        if (marker) {
+            marker.setMap(null);
+        }
+
+        marker = new google.maps.Marker({
+            position: { lat: parseFloat(lat), lng: parseFloat(lon) },
+            map: map
+        });
+
+    });
+
+}
+</script>
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&callback=initMap" async defer></script>
+
+
+
+{% endblock %}

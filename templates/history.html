@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/history.css') }}">
+{% endblock %}
+
+
+
+<div style="padding: 40px">
+
+    <div class="history-top">
+
+    <h2>Prediction History</h2>
+
+    <button class="clear-btn" onclick="clearHistory()">
+        Clear History
+    </button>
+
+    </div>
+
+    <table border="1" cellpadding="10" cellspacing="0" style="margin-top: 20px; width: 100%; text-align: center;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Risk Score</th>
+                <th>Risk Level</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody id="history-body">
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+
+fetch("/get-history")
+    .then(res => res.json())
+    .then(data => {
+
+        const table = document.getElementById("history-body");
+
+        data.forEach(row => {
+
+            const tr = document.createElement("tr");
+
+            tr.innerHTML = `
+                <td>${row[0]}</td>
+                <td>${row[1]}</td>
+                <td>${row[2]}</td>
+                <td>${row[3]}</td>
+                <td>${row[4]}</td>
+                <td>${row[5]}</td>
+                <td>${row[6]}</td>
+            `;
+
+            table.appendChild(tr);
+        });
+    });
+
+</script>
+
+<script>
+
+function clearHistory() {
+
+    const confirmClear = confirm(
+        "Are you sure you want to clear all history?"
+    );
+
+    if (!confirmClear) return;
+
+    fetch("/clear-history", {
+        method: "POST"
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        alert(data.message);
+
+        location.reload();
+
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+</script>
+
+{% endblock %}
